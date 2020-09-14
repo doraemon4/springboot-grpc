@@ -3,7 +3,7 @@ package com.stephen.learning.grpc.service;
 import "google/protobuf/timestamp.proto";
 import "GenderType.proto";
 
-service UserGrpcService{
+service UserService{
   rpc queryUserInfo (QueryUserRequest) returns (QueryUserResponse);
 }
 
