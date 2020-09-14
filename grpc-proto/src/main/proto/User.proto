@@ -1,0 +1,22 @@
+syntax = "proto3";
+package com.stephen.learning.grpc.service;
+import "google/protobuf/timestamp.proto";
+import "GenderType.proto";
+
+service UserGrpcService{
+  rpc queryUserInfo (QueryUserRequest) returns (QueryUserResponse);
+}
+
+message QueryUserRequest{
+  string name = 1;
+  string address = 2;
+  GenderType gender = 3;
+}
+
+message QueryUserResponse{
+  string name = 1;
+  GenderType gender = 2;
+  google.protobuf.Timestamp birthDate = 3;
+  string email = 4;
+  string address = 5;
+}
