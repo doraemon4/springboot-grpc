@@ -9,8 +9,6 @@ service UserService{
 
 message QueryUserRequest{
   string name = 1;
-  string address = 2;
-  GenderType gender = 3;
 }
 
 message QueryUserResponse{

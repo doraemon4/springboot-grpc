@@ -27,25 +27,6 @@ public final class User {
      */
     com.google.protobuf.ByteString
         getNameBytes();
-
-    /**
-     * <code>string address = 2;</code>
-     */
-    java.lang.String getAddress();
-    /**
-     * <code>string address = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getAddressBytes();
-
-    /**
-     * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-     */
-    int getGenderValue();
-    /**
-     * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-     */
-    com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType getGender();
   }
   /**
    * Protobuf type {@code com.stephen.learning.grpc.service.QueryUserRequest}
@@ -61,8 +42,6 @@ public final class User {
     }
     private QueryUserRequest() {
       name_ = "";
-      address_ = "";
-      gender_ = 0;
     }
 
     @java.lang.Override
@@ -100,18 +79,6 @@ public final class User {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              address_ = s;
-              break;
-            }
-            case 24: {
-              int rawValue = input.readEnum();
-
-              gender_ = rawValue;
               break;
             }
           }
@@ -172,56 +139,6 @@ public final class User {
       }
     }
 
-    public static final int ADDRESS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object address_;
-    /**
-     * <code>string address = 2;</code>
-     */
-    public java.lang.String getAddress() {
-      java.lang.Object ref = address_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        address_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string address = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getAddressBytes() {
-      java.lang.Object ref = address_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        address_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int GENDER_FIELD_NUMBER = 3;
-    private int gender_;
-    /**
-     * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-     */
-    public int getGenderValue() {
-      return gender_;
-    }
-    /**
-     * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-     */
-    public com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType getGender() {
-      com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType result = com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType.valueOf(gender_);
-      return result == null ? com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType.UNRECOGNIZED : result;
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -237,12 +154,6 @@ public final class User {
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (!getAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, address_);
-      }
-      if (gender_ != com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType.MALE.getNumber()) {
-        output.writeEnum(3, gender_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -253,13 +164,6 @@ public final class User {
       size = 0;
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-      }
-      if (!getAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, address_);
-      }
-      if (gender_ != com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType.MALE.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, gender_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -279,9 +183,6 @@ public final class User {
       boolean result = true;
       result = result && getName()
           .equals(other.getName());
-      result = result && getAddress()
-          .equals(other.getAddress());
-      result = result && gender_ == other.gender_;
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -295,10 +196,6 @@ public final class User {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-      hash = (53 * hash) + getAddress().hashCode();
-      hash = (37 * hash) + GENDER_FIELD_NUMBER;
-      hash = (53 * hash) + gender_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -430,10 +327,6 @@ public final class User {
         super.clear();
         name_ = "";
 
-        address_ = "";
-
-        gender_ = 0;
-
         return this;
       }
 
@@ -457,8 +350,6 @@ public final class User {
       public com.stephen.learning.grpc.service.User.QueryUserRequest buildPartial() {
         com.stephen.learning.grpc.service.User.QueryUserRequest result = new com.stephen.learning.grpc.service.User.QueryUserRequest(this);
         result.name_ = name_;
-        result.address_ = address_;
-        result.gender_ = gender_;
         onBuilt();
         return result;
       }
@@ -503,13 +394,6 @@ public final class User {
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
-        }
-        if (!other.getAddress().isEmpty()) {
-          address_ = other.address_;
-          onChanged();
-        }
-        if (other.gender_ != 0) {
-          setGenderValue(other.getGenderValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -603,119 +487,6 @@ public final class User {
   checkByteStringIsUtf8(value);
         
         name_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object address_ = "";
-      /**
-       * <code>string address = 2;</code>
-       */
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          address_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string address = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          address_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string address = 2;</code>
-       */
-      public Builder setAddress(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        address_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string address = 2;</code>
-       */
-      public Builder clearAddress() {
-        
-        address_ = getDefaultInstance().getAddress();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string address = 2;</code>
-       */
-      public Builder setAddressBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        address_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int gender_ = 0;
-      /**
-       * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-       */
-      public int getGenderValue() {
-        return gender_;
-      }
-      /**
-       * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-       */
-      public Builder setGenderValue(int value) {
-        gender_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-       */
-      public com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType getGender() {
-        com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType result = com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType.valueOf(gender_);
-        return result == null ? com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-       */
-      public Builder setGender(com.stephen.learning.grpc.service.GenderTypeOuterClass.GenderType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        gender_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.stephen.learning.grpc.service.GenderType gender = 3;</code>
-       */
-      public Builder clearGender() {
-        
-        gender_ = 0;
         onChanged();
         return this;
       }
@@ -1874,10 +1645,8 @@ public final class User {
     java.lang.String[] descriptorData = {
       "\n\nUser.proto\022!com.stephen.learning.grpc." +
       "service\032\037google/protobuf/timestamp.proto" +
-      "\032\020GenderType.proto\"p\n\020QueryUserRequest\022\014" +
-      "\n\004name\030\001 \001(\t\022\017\n\007address\030\002 \001(\t\022=\n\006gender\030" +
-      "\003 \001(\0162-.com.stephen.learning.grpc.servic" +
-      "e.GenderType\"\257\001\n\021QueryUserResponse\022\014\n\004na" +
+      "\032\020GenderType.proto\" \n\020QueryUserRequest\022\014" +
+      "\n\004name\030\001 \001(\t\"\257\001\n\021QueryUserResponse\022\014\n\004na" +
       "me\030\001 \001(\t\022=\n\006gender\030\002 \001(\0162-.com.stephen.l" +
       "earning.grpc.service.GenderType\022-\n\tbirth" +
       "Date\030\003 \001(\0132\032.google.protobuf.Timestamp\022\r" +
@@ -1906,7 +1675,7 @@ public final class User {
     internal_static_com_stephen_learning_grpc_service_QueryUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_stephen_learning_grpc_service_QueryUserRequest_descriptor,
-        new java.lang.String[] { "Name", "Address", "Gender", });
+        new java.lang.String[] { "Name", });
     internal_static_com_stephen_learning_grpc_service_QueryUserResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_stephen_learning_grpc_service_QueryUserResponse_fieldAccessorTable = new
